@@ -72,9 +72,18 @@ a{color:inherit;text-decoration:none}
 
 /* grids */
 .grid-3{display:grid;grid-template-columns:1fr;gap:12px}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;gap:12px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;gap:12px}
 .link-sm{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted-foreground)}
 .link-sm:hover{color:var(--primary)}
+
+/* project filters */
+.project-filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.filter-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--foreground);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;transition:all .3s;font-family:inherit}
+.filter-btn:hover{border-color:var(--primary);color:var(--primary)}
+.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.filter-btn.active:hover{background:var(--hover);border-color:var(--hover)}
+.filter-count{font-size:9px;opacity:.7}
+.project-empty{text-align:center;padding:40px 16px;color:var(--muted-foreground);font-size:.9rem}
 
 /* project card */
 .project{border:1px solid var(--border);background:linear-gradient(135deg,rgba(255,255,255,.9) 0%,rgba(240,236,255,.6) 100%);border-radius:var(--radius);overflow:hidden;transition:all .5s ease;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,.06)}
