@@ -89,13 +89,21 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="section">
+  <!-- SELECTED WORK -->
+  <section class="section" id="work">
     <div class="section-head">
-      <h3 class="display lg">SELECTED PROJECTS</h3>
-      <a href="#contact" class="link-sm">View all projects &#8599;</a>
+      <div>
+        <h3 class="display lg">SELECTED WORK</h3>
+        <p class="lead" style="margin-top:4px">A selection of projects I've built across AI &amp; Full-Stack development.</p>
+      </div>
+    </div>
+    <div class="project-filters" id="projectFilters">
+      <button class="filter-btn active" data-filter="all">ALL <span class="filter-count" id="countAll">06</span></button>
+      <button class="filter-btn" data-filter="ai">AI <span class="filter-count" id="countAi">02</span></button>
+      <button class="filter-btn" data-filter="fullstack">FULL-STACK <span class="filter-count" id="countFs">04</span></button>
     </div>
     <div class="grid-3" id="projects"></div>
+    <p class="project-empty" id="projectEmpty" style="display:none">No projects in this category yet.</p>
   </section>
 
   <!-- EDUCATION / PROCESS / TESTIMONIAL -->
@@ -173,7 +181,6 @@
       </div>
       <div class="contact-rows">
         <div class="crow"><span class="ico">&#9993;</span>faqehanoor022@gmail.com</div>
-        <div class="crow"><span class="ico">&#9742;</span> +92 330 2354356</div>
         <div class="crow"><span class="ico">&#9906;</span> Remote / Worldwide</div>
         <div class="socials">
           <a href="https://github.com/faqehanoor" aria-label="GitHub">GH</a>
