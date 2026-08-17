@@ -6,6 +6,8 @@ const projects = [
   { n: "02", img: "Abrarinfotech.jpeg", title: "ABRAR INFOTECH", tag: "Full Stack Website", badge: "ABRAR INFOTECH", link: "https://www.abrarinfotech.com", cat: "fullstack" },
   { n: "03", img: "Cryptoclub.png", title: "CRYPTO CLUB", tag: "Full Stack Website", badge: "CRYPTO CLUB", link: "https://cryptoclub.ch/", cat: "fullstack" },
   { n: "04", img: "Dashboard.png", title: "CRYPTO Dashboard", tag: "Full Stack Dashboard", badge: "CRYPTO dashboard", link: "https://cryptoclub.ch/dashboard", cat: "fullstack" },
+  { n: "05", img: "OpenClaw.png", title: " OpenClaw AI Meeting Assistant ", tag: "OpenClaw", badge: "AI Assitant", link: "https://lnkd.in/p/d6vhDnba", cat: "ai" },
+
 ];
 
 const education = [
