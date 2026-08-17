@@ -1,11 +1,11 @@
 // Data
 const projects = [
-  { n: "01", img: "SahilConsaltancy.in.jpeg", title: "Sahil Consultancy", tag: "Full Stack Website Build for Client", badge: "SahilConsaltancy", link: "http://sahilconsultancy.in/" },
-  { n: "02", img: "Abrarinfotech.jpeg", title: "ABRAR INFOTECH", tag: "FullStack Website Build for Client", badge: "ABRAR INFOTECH", link: "https://www.abrarinfotech.com" },
-  { n: "03", img: "Cryptoclub.png", title: "CRYPTO CLUB", tag: "Full Stack Website Build for Client", badge: "CRYPTO CLUB", link: "https://cryptoclub.ch/" },
-  { n: "04", img: "Dashboard.png", title: "CRYPTO Dashboard", tag: "Full Stack Crypto Dashboard Build for Client", badge: "CRYPTO dashboard", link: "https://cryptoclub.ch/dashboard" },
-  { n: "05", img: "Contribution.png", title: "My First Opensource Speckit Cotribution", tag: "Speckit Contribution Merged", badge: "Contribution", link: "https://github.com/github/spec-kit/pull/3592" },
-  { n: "06", img: "AI Native Book.png", title: "My AI NATIVE BOOK", tag: "BUILD USING DOCASAURUS", badge: "AI NATIVE BOOK", link: "https://hackathon-1-ai-native-book.vercel.app/" },
+  { n: "01", img: "Contribution.png", title: "Speckit Opensource Contribution", tag: "AI Tooling / Opensource", badge: "Contribution", link: "https://github.com/github/spec-kit/pull/3592", cat: "ai" },
+  { n: "02", img: "AI Native Book.png", title: "AI Native Book", tag: "AI Documentation / Hackathon", badge: "AI Native Book", link: "https://hackathon-1-ai-native-book.vercel.app/", cat: "ai" },
+  { n: "01", img: "SahilConsaltancy.in.jpeg", title: "Sahil Consultancy", tag: "Full Stack Website", badge: "SahilConsaltancy", link: "http://sahilconsultancy.in/", cat: "fullstack" },
+  { n: "02", img: "Abrarinfotech.jpeg", title: "ABRAR INFOTECH", tag: "Full Stack Website", badge: "ABRAR INFOTECH", link: "https://www.abrarinfotech.com", cat: "fullstack" },
+  { n: "03", img: "Cryptoclub.png", title: "CRYPTO CLUB", tag: "Full Stack Website", badge: "CRYPTO CLUB", link: "https://cryptoclub.ch/", cat: "fullstack" },
+  { n: "04", img: "Dashboard.png", title: "CRYPTO Dashboard", tag: "Full Stack Dashboard", badge: "CRYPTO dashboard", link: "https://cryptoclub.ch/dashboard", cat: "fullstack" },
 ];
 
 const education = [
@@ -39,8 +39,10 @@ const process = [
 ];
 
 // Render
-document.getElementById("projects").innerHTML = projects.map(p => `
-  <article class="project reveal">
+let activeFilter = "all";
+
+function renderProject(p) {
+  return `<article class="project reveal" data-cat="${p.cat}">
     <div class="thumb">
       <img src="${p.img}" alt="${p.title}" loading="lazy" />
       <div class="badge">${p.badge}</div>
@@ -54,7 +56,44 @@ document.getElementById("projects").innerHTML = projects.map(p => `
         <div class="arrow">&#8599;</div>
       </a>
     </div>
-  </article>`).join("");
+  </article>`;
+}
+
+function renderProjects(filter) {
+  activeFilter = filter;
+  const grid = document.getElementById("projects");
+  const empty = document.getElementById("projectEmpty");
+  const filtered = filter === "all" ? projects : projects.filter(p => p.cat === filter);
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    empty.style.display = "block";
+  } else {
+    empty.style.display = "none";
+    grid.innerHTML = filtered.map(renderProject).join("");
+    grid.querySelectorAll(".project").forEach(el => el.classList.add("in"));
+  }
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.filter === filter);
+  });
+}
+
+// Dynamic counts
+const aiCount = projects.filter(p => p.cat === "ai").length;
+const fsCount = projects.filter(p => p.cat === "fullstack").length;
+document.getElementById("countAll").textContent = String(projects.length).padStart(2, "0");
+document.getElementById("countAi").textContent = String(aiCount).padStart(2, "0");
+document.getElementById("countFs").textContent = String(fsCount).padStart(2, "0");
+
+// Filter click
+document.getElementById("projectFilters").addEventListener("click", (e) => {
+  const btn = e.target.closest(".filter-btn");
+  if (btn) renderProjects(btn.dataset.filter);
+});
+
+// Initial render
+renderProjects("all");
 
 document.getElementById("edu").innerHTML = education.map(e => `
   <div class="edu">
